@@ -7,6 +7,9 @@ namespace SimplePwshInterpretor
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            System.Console.WriteLine("Press any key to finish...");
+            Console.ReadKey();
         }
     }
 }
