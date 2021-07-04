@@ -40,12 +40,12 @@ namespace SimplePwshInterpretor
             {
                 SimpleInterpretor();
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                System.Console.WriteLine("Program terminating with Exception:\n" + ex);
+                Console.WriteLine("Program terminating with Exception:\n" + ex);
             }
 
-            Console.WriteLine("Press any key to exit...");
+            Console.WriteLine("\nPress any key to exit...");
             Console.Read();
         }
     }
