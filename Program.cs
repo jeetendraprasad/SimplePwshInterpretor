@@ -1,15 +1,52 @@
 ﻿using System;
+using System.Management.Automation;
 
 namespace SimplePwshInterpretor
 {
     class Program
     {
+        static void SimpleInterpretor()
+        {
+            Console.WriteLine("TIP: Type exit to finish.\n");
+
+            PowerShell ps = PowerShell.Create();
+
+            while (true)
+            {
+                Console.Write(">>> ");
+
+                string command = Console.ReadLine().Trim().TrimEnd(';');
+
+                if (command.ToLower() == "exit")
+                break;
+
+                ps.AddScript(command);
+
+                var results = ps.Invoke();
+
+                foreach(var result in results)
+                {
+                    Console.WriteLine(Convert.ToString(result));
+                }
+            }
+            
+
+        }
+
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            try
+            {
+                SimpleInterpretor();
+            }
+            catch (System.Exception ex)
+            {
+                System.Console.WriteLine("Program terminating with Exception:\n" + ex);
+            }
 
-            System.Console.WriteLine("Press any key to finish...");
-            Console.ReadKey();
+            Console.WriteLine("Press any key to exit...");
+            Console.Read();
         }
     }
 }
