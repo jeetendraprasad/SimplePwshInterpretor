@@ -1,4 +1,8 @@
 # SimplePwshInterpretor
 Simple interpretor based on powershell core (for now 7)
 
-Empty Project now.
+
+BUILD
+-----
+
+dotnet publish -r win-x64 -c Release /p:PublishSingleFile=true
