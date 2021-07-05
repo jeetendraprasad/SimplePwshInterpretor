@@ -9,5 +9,6 @@ Unfortunately due to open bug https://github.com/PowerShell/PowerShell/issues/13
 
 (win64 portable)
 dotnet publish -c Release -r win-x64   --self-contained True
+
 (for linux)
 dotnet publish -c Release -r linux-x64 --self-contained True
