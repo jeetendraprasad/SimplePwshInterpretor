@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Management.Automation;
+using System.Collections.ObjectModel;
+using System.Data;
 
 namespace SimplePwshInterpretor
 {
@@ -49,7 +51,9 @@ namespace SimplePwshInterpretor
 
                 ps.AddScript(command);
 
-                var results = ps.Invoke();
+                Collection<PSObject> results = ps.Invoke();
+
+                //DataTable dt = results.ToDataTable();
 
                 foreach(var result in results)
                 {
@@ -59,7 +63,6 @@ namespace SimplePwshInterpretor
             
 
         }
-
 
         static void Main(string[] args)
         {
