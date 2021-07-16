@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Management.Automation;
+using System.Collections.ObjectModel;
+using System.Data;
 
 namespace SimplePwshInterpretor
 {
@@ -19,7 +21,7 @@ namespace SimplePwshInterpretor
                 Console.WriteLine("No cookies for you.");
                 Console.WriteLine("Is Powershell 7 installed in your system?");
                 Console.WriteLine("Logging error as :-");
-                
+
                 Console.WriteLine(ex);
 
                 Console.WriteLine("");
@@ -29,7 +31,7 @@ namespace SimplePwshInterpretor
             }
 
             return ps;
-        } 
+        }
 
 
         static void SimpleInterpretor()
@@ -45,21 +47,26 @@ namespace SimplePwshInterpretor
                 string command = Console.ReadLine().Trim().TrimEnd(';');
 
                 if (command.ToLower() == "exit")
-                break;
+                    break;
 
                 ps.AddScript(command);
 
-                var results = ps.Invoke();
+                Collection<PSObject> results = ps.Invoke();
 
-                foreach(var result in results)
-                {
-                    Console.WriteLine(Convert.ToString(result));
-                }
+                DataTable dt = results.ToDataTable();
+
+                ConsoleTable.Table consoleTable = dt.ToConsoleTable();
+
+                System.Console.WriteLine(consoleTable.ToString());
+
+                // foreach(var result in results)
+                // {
+                //     Console.WriteLine(Convert.ToString(result));
+                // }
             }
-            
+
 
         }
-
 
         static void Main(string[] args)
         {
