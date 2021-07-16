@@ -1,2 +1,0 @@
-Some part of this software is taken from
-1> https://github.com/BrunoVT1992/ConsoleTable (I may change that in future, but for now its suiting my simple purpose)
