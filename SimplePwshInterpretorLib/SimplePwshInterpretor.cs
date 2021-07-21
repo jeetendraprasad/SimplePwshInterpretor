@@ -7,7 +7,7 @@ namespace SimplePwshInterpretorLib
     {
         private SimplePwshInterpretorSingleton _simplePwshInterpretorSingleton;
 
-        SimplePwshInterpretor()
+        public SimplePwshInterpretor()
         {
             _simplePwshInterpretorSingleton = SimplePwshInterpretorSingleton.Instance;
         }
