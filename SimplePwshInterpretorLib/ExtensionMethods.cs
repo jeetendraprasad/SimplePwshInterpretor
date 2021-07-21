@@ -2,6 +2,7 @@
 
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Linq;
 using System.Management.Automation;
 
 namespace SimplePwshInterpretorLib
@@ -56,6 +57,37 @@ namespace SimplePwshInterpretorLib
             }
 
             return dt;
+        }
+
+        public static ConsoleTable.Table ToConsoleTable(this DataTable dt)
+        {
+            var table = new ConsoleTable.Table();
+
+            var columnNames = dt.Columns.Cast<DataColumn>()
+                                .Select(x => x.ColumnName)
+                                .ToArray();
+
+            table.SetHeaders(columnNames);
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                string[] rowData = new string[dt.Columns.Count];
+
+                for (int j = 0; j < dt.Columns.Count; j++)
+                {
+                    // for object
+                    //object o = dt.Rows[i].ItemArray[j];
+
+                    // for string
+                    string s = dt.Rows[i].ItemArray[j].ToString();
+
+                    rowData[j] = s;
+                }
+
+                table.AddRow(rowData);
+            }
+
+            return table;
         }
     }
 }

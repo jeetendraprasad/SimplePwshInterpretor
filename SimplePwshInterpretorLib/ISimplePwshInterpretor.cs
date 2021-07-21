@@ -3,7 +3,7 @@ using System.Data;
 
 namespace SimplePwshInterpretorLib
 {
-    interface ISimplePwshInterpretor
+    internal interface ISimplePwshInterpretor
     {
         bool AddScript(string script);
         DataTable Eval();
